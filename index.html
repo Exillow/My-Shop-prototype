@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Good Enough Shop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="assets/GitHub_Invertocat_Logo.svg.png">
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+  <!-- Header -->
+  <div class="bg-white shadow p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">Good Enough Shop</h1>
+    <button onclick="toggleCart()" class="relative">
+      🛒
+      <span id="cart-count" class="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full absolute -top-2 -right-2">0</span>
+    </button>
+  </div>
+
+  <!-- Products -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+    <div class="bg-white p-4 rounded shadow">
+      <img src="assets/shopping (1).webp" alt="Casual Sneakers" class="mb-2 rounded">
+      <h2 class="text-lg font-semibold">Casual Sneakers</h2>
+      <p class="text-sm mb-2">$10</p>
+      <div class="flex gap-2">
+        <button class="bg-blue-500 text-white px-3 py-1 rounded" onclick="addToCart('Casual Sneakers', 10)">Add to Cart</button>
+        <a href="checkout.html" class="bg-green-500 text-white px-3 py-1 rounded">Buy Now</a>
+      </div>
+    </div>
+    <div class="bg-white p-4 rounded shadow">
+      <img src="assets/shopping (2).webp" alt="Running Shoes" class="mb-2 rounded">
+      <h2 class="text-lg font-semibold">Running Shoes</h2>
+      <p class="text-sm mb-2">$15</p>
+      <div class="flex gap-2">
+        <button class="bg-blue-500 text-white px-3 py-1 rounded" onclick="addToCart('Running Shoes', 15)">Add to Cart</button>
+        <a href="checkout.html" class="bg-green-500 text-white px-3 py-1 rounded">Buy Now</a>
+      </div>
+    </div>
+    <div class="bg-white p-4 rounded shadow">
+      <img src="assets/shopping.webp" alt="High-Top Kicks" class="mb-2 rounded">
+      <h2 class="text-lg font-semibold">High-Top Kicks</h2>
+      <p class="text-sm mb-2">$20</p>
+      <div class="flex gap-2">
+        <button class="bg-blue-500 text-white px-3 py-1 rounded" onclick="addToCart('High-Top Kicks', 20)">Add to Cart</button>
+        <a href="checkout.html" class="bg-green-500 text-white px-3 py-1 rounded">Buy Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Panel -->
+  <div id="cart" class="fixed top-0 right-0 w-80 h-full bg-white shadow-lg p-4 overflow-y-auto hidden z-50">
+    <h2 class="text-xl font-bold mb-4">Your Cart</h2>
+    <div id="cart-items" class="space-y-2"></div>
+    <div class="mt-4 font-semibold">Total: $<span id="cart-total">0</span></div>
+    <a href="checkout.html" class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded">Checkout</a>
+    <button onclick="toggleCart()" class="mt-2 text-sm text-gray-600 block">Close</button>
+  </div>
+
+  <script src="shop.js"></script>
+</body>
+</html>

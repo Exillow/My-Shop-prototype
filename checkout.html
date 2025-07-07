@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 p-6">
+  <div class="max-w-2xl mx-auto bg-white p-6 rounded shadow">
+    <h1 class="text-2xl font-bold mb-4">Checkout</h1>
+
+    <!-- Shipping Info -->
+    <div class="mb-6">
+      <h2 class="text-xl font-semibold mb-2">Shipping Information</h2>
+      <form id="checkout-form">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="text" placeholder="Full Name" class="border rounded p-2" required>
+          <input type="text" placeholder="Phone Number" class="border rounded p-2" required>
+          <input type="email" placeholder="Email Address" class="border rounded p-2" required>
+          <input type="text" placeholder="City" class="border rounded p-2" required>
+          <input type="text" placeholder="Postal Code" class="border rounded p-2" required>
+          <input type="text" placeholder="Street Address" class="border rounded p-2 md:col-span-2" required>
+        </div>
+
+        <!-- Shipping Options -->
+        <div class="mt-6">
+          <h3 class="font-medium mb-2">Shipping Method</h3>
+          <label class="block mb-2">
+            <input type="radio" name="shipping" value="0" class="mr-2" checked>
+            Standard (3-5 days) - Free
+          </label>
+          <label class="block mb-2">
+            <input type="radio" name="shipping" value="5" class="mr-2">
+            Express (1-2 days) - $5
+          </label>
+        </div>
+
+        <!-- Payment Info -->
+        <div class="mt-6">
+          <h3 class="font-medium mb-2">Payment Method</h3>
+          <select class="border rounded p-2 w-full">
+            <option>Credit/Debit Card</option>
+            <option>Cash on Delivery</option>
+            <option>GCash</option>
+            <option>PayPal</option>
+          </select>
+        </div>
+
+        <!-- Total Amount -->
+        <div class="mt-6">
+          <h3 class="font-medium mb-2">Order Summary</h3>
+          <div class="flex justify-between">
+            <span>Subtotal</span>
+            <span>$40.00</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Shipping</span>
+            <span id="shipping-cost">$0.00</span>
+          </div>
+          <div class="flex justify-between font-bold border-t mt-2 pt-2">
+            <span>Total</span>
+            <span id="total-amount">$40.00</span>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="mt-6 bg-green-500 text-white px-4 py-2 rounded w-full">Place Order</button>
+      </form>
+    </div>
+
+    <a href="index.html" class="text-blue-500 underline block text-center mt-4">Back to Shop</a>
+  </div>
+
+  <script>
+    const shippingRadios = document.querySelectorAll('input[name="shipping"]');
+    const shippingCostElem = document.getElementById('shipping-cost');
+    const totalAmountElem = document.getElementById('total-amount');
+    const baseTotal = 40;
+
+    shippingRadios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        const shippingCost = parseFloat(radio.value);
+        shippingCostElem.textContent = `$${shippingCost.toFixed(2)}`;
+        totalAmountElem.textContent = `$${(baseTotal + shippingCost).toFixed(2)}`;
+      });
+    });
+  </script>
+</body>
+</html>
